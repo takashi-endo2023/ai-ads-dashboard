@@ -1,0 +1,9 @@
+{
+  "name": "ai-ads-dashboard",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "dev:backend": "cd backend && npm run start:dev",
+    "dev:frontend": "cd frontend && npm run dev"
+  }
+}
