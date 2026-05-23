@@ -31,8 +31,11 @@ jobs:
 
       - name: Package Lambda zip
         run: |
-          npm ci --omit=dev
-          cd backend && zip -r ../function.zip dist/ ../node_modules/
+          mkdir /tmp/lambda
+          cp -r backend/dist /tmp/lambda/
+          cp backend/package.json /tmp/lambda/
+          cd /tmp/lambda && npm install --omit=dev
+          cd /tmp/lambda && zip -r $GITHUB_WORKSPACE/function.zip dist/ node_modules/
 
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
